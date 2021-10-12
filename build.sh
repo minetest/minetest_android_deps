@@ -104,7 +104,7 @@ if [ "$1" == "--all" ]; then
 		name=${name#*/}
 		( _run_build "${name%.*}" "$2" )
 	done
-	echo "Full build for ABI $2 succesful."
+	echo "Full build for ABI $2 successful."
 else
 	_run_build "$1" "$2"
 	echo "Build of $1 for ABI $2 successful."
