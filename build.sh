@@ -77,19 +77,19 @@ _run_build () {
 	source "$script"
 
 	mkdir -p src
-	pushd src >/dev/null
+	pushd src
 	srcdir=$PWD
 	download
-	popd >/dev/null
+	popd
 
 	builddir=$PWD/build/$1-$2
 	pkgdir=$PWD/deps/$2/$1
 	rm -rf "$pkgdir"
 	mkdir -p "$builddir" "$pkgdir"
 
-	pushd "$builddir" >/dev/null
+	pushd "$builddir"
 	build
-	popd >/dev/null
+	popd
 }
 
 if [ $# -lt 2 ]; then
