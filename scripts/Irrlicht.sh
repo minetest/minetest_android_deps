@@ -1,7 +1,7 @@
 #!/bin/bash -e
-irrlicht_ver=1.9.0mt4
+irrlicht_ver=1.9.0mt5
 png_ver=1.6.37
-jpeg_ver=2.1.2
+jpeg_ver=2.1.3
 
 download () {
 	[ -d irrlicht ] || git clone https://github.com/minetest/irrlicht -b $irrlicht_ver irrlicht
