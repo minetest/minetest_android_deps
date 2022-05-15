@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Install deps
       run: ./ci_install.sh
@@ -31,8 +31,9 @@ jobs:
         ls -lh ../deps.zip
 
     - name: Upload and tag
-      uses: eine/tip@master
+      uses: pyTooling/Actions/releaser@main
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: 'latest'
         files: ./deps.zip
+      if: github.event_name != 'pull_request'
