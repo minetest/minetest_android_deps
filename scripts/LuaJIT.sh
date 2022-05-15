@@ -1,8 +1,16 @@
 #!/bin/bash -e
-ver=2.1.0-beta3
+
+repo=https://luajit.org/git/luajit.git
+rev=91bc6b8ad1f373c1ce9003dc024b2e21fad0e444
 
 download () {
-	get_tar_archive LuaJIT "https://luajit.org/download/LuaJIT-${ver}.tar.gz"
+	if [ ! -d LuaJIT/.git ]; then
+		rm -rf LuaJIT
+		git clone $repo LuaJIT
+		pushd LuaJIT
+		git checkout $rev
+		popd
+	fi
 }
 
 build () {
