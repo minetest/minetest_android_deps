@@ -54,6 +54,8 @@ _setup_toolchain () {
 	else
 		echo "Invalid ABI given"; return 1
 	fi
+	export AR=llvm-ar
+	export RANLIB=llvm-ranlib
 	export CFLAGS="-fPIC ${CFLAGS}"
 	export CXXFLAGS="-fPIC ${CXXFLAGS}"
 
