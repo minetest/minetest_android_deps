@@ -30,6 +30,11 @@ jobs:
         . env.sh
         ./build.sh --all x86
 
+    - name: "Build → x86_64"
+      run: |
+        . env.sh
+        ./build.sh --all x86_64
+
     - name: Archive
       run: |
         cd deps && zip -9r ../deps.zip -- *
