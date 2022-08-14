@@ -34,17 +34,8 @@ build () {
 	make
 
 	cp lib/Android/libIrrlichtMt.a $pkgdir/
+	cp $libpng $pkgdir/
+	cp $libjpeg $pkgdir/
 	cp -a $srcdir/irrlicht/include $pkgdir/include
 	cp -a $srcdir/irrlicht/media/Shaders $pkgdir/Shaders
-
-	# Integrate static dependencies directly into the Irrlicht library file
-	# (someone else can bother with a better solution sometime)
-	local libz=$(dirname $(which "$CC"))/../sysroot/usr/lib/$CROSS_PREFIX/libz.a
-	pushd $(mktemp -d)
-	for deplib in $libz $libpng $libjpeg; do
-		llvm-ar x "$deplib"
-		llvm-ar q $pkgdir/libIrrlichtMt.a *.o
-		rm -- *.o
-	done
-	popd
 }
