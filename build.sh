@@ -48,8 +48,6 @@ _setup_toolchain () {
 	elif [ "$TARGET_ABI" == x86_64 ]; then
 		API=21
 		CROSS_PREFIX=x86_64-linux-android
-		CFLAGS="-mssse3 -mfpmath=sse"
-		CXXFLAGS="-mssse3 -mfpmath=sse"
 	else
 		echo "Invalid ABI given"; return 1
 	fi

@@ -33,9 +33,7 @@ build () {
 		-DJPEG_INCLUDE_DIR=$(dirname "$libjpeg")/../include
 	make
 
-	cp lib/Android/libIrrlichtMt.a $pkgdir/
-	cp $libpng $pkgdir/
-	cp $libjpeg $pkgdir/
+	cp -p lib/Android/libIrrlichtMt.a $libpng $libjpeg $pkgdir/
 	cp -a $srcdir/irrlicht/include $pkgdir/include
 	cp -a $srcdir/irrlicht/media/Shaders $pkgdir/Shaders
 }
