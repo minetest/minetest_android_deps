@@ -16,7 +16,9 @@ download () {
 build () {
 	# Figure out needed host compiler
 	local hostcc="cc -m32"
-	[[ "$TARGET_ABI" == "arm64-"* ]] && hostcc="cc -m64"
+	if [[ "$TARGET_ABI" == "arm64-"* || "$TARGET_ABI" == x86_64 ]]; then
+		hostcc="cc -m64"
+	fi
 
 	cd $srcdir/LuaJIT/src
 	local targetcc="$CC $CFLAGS"
