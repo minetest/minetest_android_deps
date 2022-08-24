@@ -1,10 +1,15 @@
 #!/bin/bash -e
-irrlicht_ver=1.9.0mt7
+irrlicht_ver=f0766c8
 png_ver=1.6.37
-jpeg_ver=2.1.3
+jpeg_ver=2.1.4
 
 download () {
-	[ -d irrlicht ] || git clone https://github.com/minetest/irrlicht -b $irrlicht_ver irrlicht
+	if [ ! -d irrlicht/.git ]; then
+		git clone https://github.com/minetest/irrlicht irrlicht
+		pushd irrlicht
+		git checkout $irrlicht_ver
+		popd
+	fi
 	get_tar_archive libpng "https://download.sourceforge.net/libpng/libpng-${png_ver}.tar.gz"
 	get_tar_archive libjpeg "https://download.sourceforge.net/libjpeg-turbo/libjpeg-turbo-${jpeg_ver}.tar.gz"
 }
@@ -19,7 +24,7 @@ build () {
 
 	mkdir -p libjpeg
 	pushd libjpeg
-	cmake $srcdir/libjpeg "${CMAKE_FLAGS[@]}"
+	cmake $srcdir/libjpeg "${CMAKE_FLAGS[@]}" -DENABLE_SHARED=OFF
 	make && make DESTDIR=$PWD install
 	popd
 
