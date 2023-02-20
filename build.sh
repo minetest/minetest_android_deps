@@ -32,21 +32,18 @@ _setup_toolchain () {
 	unset CFLAGS CPPFLAGS CXXFLAGS
 
 	TARGET_ABI="$1"
+	API=21
 	if [ "$TARGET_ABI" == armeabi-v7a ]; then
-		API=16
 		CROSS_PREFIX=armv7a-linux-androideabi
 		CFLAGS="-mthumb"
 		CXXFLAGS="-mthumb"
 	elif [ "$TARGET_ABI" == arm64-v8a ]; then
-		API=21
 		CROSS_PREFIX=aarch64-linux-android
 	elif [ "$TARGET_ABI" == x86 ]; then
-		API=16
 		CROSS_PREFIX=i686-linux-android
 		CFLAGS="-mssse3 -mfpmath=sse"
 		CXXFLAGS="-mssse3 -mfpmath=sse"
 	elif [ "$TARGET_ABI" == x86_64 ]; then
-		API=21
 		CROSS_PREFIX=x86_64-linux-android
 	else
 		echo "Invalid ABI given"; return 1
