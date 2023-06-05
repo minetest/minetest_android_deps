@@ -1,7 +1,7 @@
 #!/bin/bash -e
-irrlicht_ver=1.9.0mt10
-png_ver=1.6.37
-jpeg_ver=2.1.4
+irrlicht_ver=1.9.0mt11
+png_ver=1.6.39
+jpeg_ver=2.1.5.1
 
 download () {
 	if [ ! -d irrlicht/.git ]; then
