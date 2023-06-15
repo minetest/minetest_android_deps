@@ -33,15 +33,24 @@ jobs:
         . env.sh
         ./build.sh --all x86_64
 
-    - name: Archive
+    - name: Archive (with Irrlicht)
       run: |
-        cd deps && zip -9r ../deps.zip -- *
+        shopt -s extglob
+        cd deps && zip -9r ../deps.zip -- */!(PNG|JPEG)
         ls -lh ../deps.zip
+
+    - name: Archive (without Irrlicht)
+      run: |
+        shopt -s extglob
+        cd deps && zip -9r ../deps-lite.zip -- */!(Irrlicht)
+        ls -lh ../deps-lite.zip
 
     - name: Upload and tag
       uses: pyTooling/Actions/releaser@main
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: 'latest'
-        files: ./deps.zip
+        files: |
+          deps.zip
+          deps-lite.zip
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
