@@ -1,5 +1,5 @@
 #!/bin/bash -e
-ver=0.21
+ver=0.22.3
 
 download () {
 	get_tar_archive gettext "https://ftp.gnu.org/pub/gnu/gettext/gettext-${ver}.tar.gz"

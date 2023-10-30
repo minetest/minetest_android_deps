@@ -1,8 +1,8 @@
 #!/bin/bash -e
-ver=3360000
+ver=3430200
 
 download () {
-	get_tar_archive sqlite-autoconf "https://sqlite.org/2021/sqlite-autoconf-${ver}.tar.gz"
+	get_tar_archive sqlite-autoconf "https://www.sqlite.org/2023/sqlite-autoconf-${ver}.tar.gz"
 }
 
 build () {

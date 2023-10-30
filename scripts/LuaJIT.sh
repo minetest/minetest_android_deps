@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 repo=https://luajit.org/git/luajit.git
-rev=91bc6b8ad1f373c1ce9003dc024b2e21fad0e444
+rev=e826d0c101d750fac8334d71e221c50d8dbe236c
 
 download () {
 	if [ ! -d LuaJIT/.git ]; then
