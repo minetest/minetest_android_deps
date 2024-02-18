@@ -1,7 +1,7 @@
 #!/bin/bash -e
 irrlicht_ver=66786d0059e9cf021c34c1de30540a45d928308c
-png_ver=1.6.40
-jpeg_ver=3.0.1
+png_ver=1.6.42
+jpeg_ver=3.0.2
 
 download () {
 	if [ ! -d irrlicht/.git ]; then
@@ -11,7 +11,7 @@ download () {
 		popd
 	fi
 	get_tar_archive libpng "https://download.sourceforge.net/libpng/libpng-${png_ver}.tar.gz"
-	get_tar_archive libjpeg "https://download.sourceforge.net/libjpeg-turbo/libjpeg-turbo-${jpeg_ver}.tar.gz"
+	get_tar_archive libjpeg "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/${jpeg_ver}/libjpeg-turbo-${jpeg_ver}.tar.gz"
 }
 
 build () {

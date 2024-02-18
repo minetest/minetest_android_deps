@@ -1,6 +1,6 @@
 #!/bin/bash -e
 mbedtls_ver=2.28.5
-curl_ver=8.4.0
+curl_ver=8.6.0
 
 download () {
 	get_tar_archive mbedtls "https://github.com/ARMmbed/mbedtls/archive/mbedtls-${mbedtls_ver}.tar.gz"
@@ -18,7 +18,7 @@ build () {
 	popd
 
 	$srcdir/curl/configure --host=$CROSS_PREFIX \
-		--with-mbedtls="$mbedtls" \
+		--with-mbedtls="$mbedtls" --without-libpsl \
 		--disable-shared --enable-static --disable-{debug,verbose} \
 		--disable-{proxy,cookies,crypto-auth,manual,ares,ftp,unix-sockets} \
 		--disable-{ldap,rtsp,dict,telnet,tftp,pop3,imap,smtp,gopher,mqtt}
