@@ -1,5 +1,5 @@
 #!/bin/bash -e
-irrlicht_ver=66786d0059e9cf021c34c1de30540a45d928308c
+irrlicht_ver=1.9.0mt15
 png_ver=1.6.42
 jpeg_ver=3.0.2
 
