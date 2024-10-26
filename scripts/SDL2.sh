@@ -1,5 +1,5 @@
 #!/bin/bash -e
-ver=2.30.1
+ver=2.30.8
 
 download () {
 	get_tar_archive sdl2 "https://github.com/libsdl-org/SDL/releases/download/release-${ver}/SDL2-${ver}.tar.gz"
